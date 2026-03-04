@@ -1,5 +1,6 @@
 package com.example.penjualanmobilkotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -39,5 +40,12 @@ class DataPembeliActivity : AppCompatActivity() {
                 it.printStackTrace()
             })
         Volley.newRequestQueue(this).add(request)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            loadData()
+        }
     }
 }
