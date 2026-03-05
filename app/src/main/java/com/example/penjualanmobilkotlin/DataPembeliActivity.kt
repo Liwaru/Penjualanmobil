@@ -33,9 +33,10 @@ class DataPembeliActivity : AppCompatActivity() {
 
         loadData()
 
-        listView.setOnItemClickListener { _, _, position, _ ->
+        listview.setOnItemClickListener { _, _, position, _ ->
             showOptionDialog(position)
-        }        }
+        }
+    }
 
     private fun loadData() {
         val url="http://192.168.0.15/penjualanmobil/Tampilpembeli.php"
