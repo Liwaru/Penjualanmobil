@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Tambah Data Paket"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold" ></TextView>
+
+    <EditText
+        android:id="@+id/editkode"
+        android:inputType="text"
+        android:hint="Ktp pembeli"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></EditText>
+
+    <EditText
+        android:id="@+id/edituang"
+        android:inputType="text"
+        android:hint="nama pembeli"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></EditText>
+
+    <EditText
+        android:id="@+id/edittenor"
+        android:inputType="text"
+        android:hint="alamat pembeli"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></EditText>
+
+    <EditText
+        android:id="@+id/editbunga"
+        android:inputType="text"
+        android:hint="nomor hp pembeli"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></EditText>
+
+    <Button
+        android:id="@+id/tombolsimpan"
+        android:text="Simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" ></Button>
+
+
+
+
+</LinearLayout>

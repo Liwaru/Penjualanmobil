@@ -42,7 +42,7 @@ class TambahPembeliActivity : AppCompatActivity() {
         alamat: String,
         nohp: String
     ) {
-        val url = "http://192.168.0.15/penjualanmobil/Tambahpembeli.php"
+        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/Tambahpembeli.php"
 
         val request = object : StringRequest(
             Request.Method.POST, url,

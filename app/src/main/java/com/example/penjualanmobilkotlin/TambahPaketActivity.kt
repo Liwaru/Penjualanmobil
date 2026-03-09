@@ -10,78 +10,67 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
-class EditPembeliActivity : AppCompatActivity() {
-
+class TambahPaketActivity : AppCompatActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_pembeli)
+        setContentView(R.layout.activity_tambah_paket)
 
         val editKtp = findViewById<EditText>(R.id.editktp)
         val editNama = findViewById<EditText>(R.id.editnama)
         val editAlamat = findViewById<EditText>(R.id.editalamat)
         val editNoHp = findViewById<EditText>(R.id.editnohp)
-        val btnUpdate = findViewById<Button>(R.id.btnUpdate)
+        val btnSimpan = findViewById<Button>(R.id.tombolsimpan)
 
-        editKtp.setText(intent.getStringExtra("ktp"))
-        editNama.setText(intent.getStringExtra("nama"))
-        editAlamat.setText(intent.getStringExtra("alamat"))
-        editNoHp.setText(intent.getStringExtra("telp"))
-
-        btnUpdate.setOnClickListener {
-
+        btnSimpan.setOnClickListener {
             val ktp = editKtp.text.toString()
             val nama = editNama.text.toString()
             val alamat = editAlamat.text.toString()
             val nohp = editNoHp.text.toString()
 
-            updateData(ktp,nama,alamat,nohp)
-
+            if (ktp.isEmpty() || nama.isEmpty() || alamat.isEmpty() || nohp.isEmpty()) {
+                Toast.makeText(this, "Semua data wajib diisi", Toast.LENGTH_SHORT).show()
+            } else {
+                simpanData(ktp, nama, alamat, nohp)
+            }
         }
     }
 
-    private fun updateData(ktp:String,nama:String,alamat:String,nohp:String){
-
-        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/editpembeli.php"
+    private fun simpanData(
+        ktp: String,
+        nama: String,
+        alamat: String,
+        nohp: String
+    ) {
+        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/Tambahpembeli.php"
 
         val request = object : StringRequest(
-            Request.Method.POST,url,
-
+            Request.Method.POST, url,
             { response ->
-
                 val json = JSONObject(response)
+                val success = json.getBoolean("success")
                 val message = json.getString("message")
 
-                Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
-                if(json.getInt("status") == 1){
+                if(success){
                     setResult(RESULT_OK)
-                    finish()
                 }
-
             },
-
-            {
-                Toast.makeText(this,"Gagal koneksi",Toast.LENGTH_SHORT).show()
+            { error ->
+                Toast.makeText(this, "Gagal kembali ke server", Toast.LENGTH_SHORT).show()
             }
-
         ){
-
-            override fun getParams(): MutableMap<String,String>{
-
-                val params = HashMap<String,String>()
-
-                params["ktp"] = ktp
-                params["nama_pembeli"] = nama
-                params["alamat_pembeli"] = alamat
-                params["telp_pembeli"] = nohp
-
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["ktp"]=ktp
+                params["nama_pembeli"]=nama
+                params["alamat_pembeli"]=alamat
+                params["telp_pembeli"]=nohp
                 return params
             }
-
         }
 
         Volley.newRequestQueue(this).add(request)
-
     }
-
+}
 }

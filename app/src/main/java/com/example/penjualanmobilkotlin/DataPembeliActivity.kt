@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,12 @@ class DataPembeliActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_pembeli)
 
+        val tomboltambah=findViewById<Button>(R.id.tomboltambah)
+
+        tomboltambah.setOnClickListener {
+            startActivity(Intent(this, TambahPembeliActivity::class.java))
+        }
+
         listview=findViewById(R.id.listpembeli)
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listData)
         listview.adapter = adapter
@@ -35,11 +42,12 @@ class DataPembeliActivity : AppCompatActivity() {
 
         listview.setOnItemClickListener { _, _, position, _ ->
             showOptionDialog(position)
+
         }
     }
 
     private fun loadData() {
-        val url="http://192.168.0.15/penjualanmobil/Tampilpembeli.php"
+        val url="http://10.208.184.71/Penjualanmobilkotlinvscode/Tampilpembeli.php"
         val request= JsonArrayRequest(url,
             {response->
                 listData.clear()
@@ -108,7 +116,7 @@ class DataPembeliActivity : AppCompatActivity() {
     }
 
     private fun hapusData(ktp: String) {
-        val url = "http://192.168.0.15/penjualanmobil/hapuspembeli.php"
+        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/hapuspembeli.php"
 
         val request = object : StringRequest(
             Request.Method.POST, url,
