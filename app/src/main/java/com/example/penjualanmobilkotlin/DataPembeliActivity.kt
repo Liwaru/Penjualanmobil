@@ -47,7 +47,7 @@ class DataPembeliActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        val url="http://10.208.184.71/Penjualanmobilkotlinvscode/Tampilpembeli.php"
+        val url="http://192.168.0.15/Penjualanmobil/Tampilpembeli.php"
         val request= JsonArrayRequest(url,
             {response->
                 listData.clear()
@@ -116,7 +116,7 @@ class DataPembeliActivity : AppCompatActivity() {
     }
 
     private fun hapusData(ktp: String) {
-        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/hapuspembeli.php"
+        val url = "http://192.168.0.15/Penjualanmobil/hapuspembeli.php"
 
         val request = object : StringRequest(
             Request.Method.POST, url,

@@ -52,7 +52,7 @@ class DataMobilActivity : AppCompatActivity() {
 
     private fun loadData() {
 
-        val url = "http://192.168.1.109/Penjualanmobilkotlinvscode/Tampilmobil.php"
+        val url = "http://192.168.0.15/Penjualanmobil/Tampilmobil.php"
 
         val request = JsonArrayRequest(
             url,
@@ -141,7 +141,7 @@ class DataMobilActivity : AppCompatActivity() {
 
     private fun hapusData(kodeMobil: String) {
 
-        val url = "http://192.168.1.109/Penjualanmobilkotlinvscode/hapusmobil.php"
+        val url = "http://192.168.0.15/Penjualanmobil/hapusmobil.php"
 
         val request = object : StringRequest(
             Request.Method.POST,

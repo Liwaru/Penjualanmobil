@@ -46,7 +46,7 @@ class DataPaketActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        val url="http://192.168.1.109/Penjualanmobilkotlinvscode/Tampilpaket.php"
+        val url="http://192.168.0.15/Penjualanmobil/Tampilpaket.php"
         val request= JsonArrayRequest(url,
             {response->
                 listData.clear()
@@ -115,7 +115,7 @@ class DataPaketActivity : AppCompatActivity() {
     }
 
     private fun hapusData(Kode_paket: String) {
-        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/hapuspaket.php"
+        val url = "http://192.168.0.15/Penjualanmobil/hapuspaket.php"
 
         val request = object : StringRequest(
             Request.Method.POST, url,

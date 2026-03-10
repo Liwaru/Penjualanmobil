@@ -20,7 +20,7 @@ class DataCicilActivity : AppCompatActivity() {
 
     private val listData = ArrayList<String>()
 
-    private val URL_TAMPIL = "http://10.17.6.120/penjualanmobil/Tampilcicilan.php"
+    private val URL_TAMPIL = "http://192.168.0.15/penjualanmobil/Tampilcicilan.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class DataCicilActivity : AppCompatActivity() {
         listBayar = findViewById(R.id.listcicil)
 
         btnTambah.setOnClickListener {
-            val intent = Intent(this, TambahCicilanActivity::class.java)
+            val intent = Intent(this, TambahCicilActivity::class.java)
             startActivity(intent)
         }
 

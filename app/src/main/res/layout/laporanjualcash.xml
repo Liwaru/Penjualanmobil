@@ -3,33 +3,38 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Halaman Login"
+        android:text="Laporan Penjualan Cash"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Pilihan Jangka Waktu Laporan"
+        android:textAlignment="viewStart"
+        android:textSize="13sp"
+        android:textStyle="normal" />
+    <Spinner
+        android:id="@+id/spinnerpilihan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+    <EditText
+        android:id="@+id/edittanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pilih Bulan/Tahun"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/edituser"
-        android:inputType="textEmailAddress"
-        android:hint="Username"
+    <ListView
+        android:id="@+id/listcash"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
-    <EditText
-        android:id="@+id/editpass"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
-    <Button
-        android:id="@+id/tombolsimpan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_height="match_parent"/>
 </LinearLayout>
