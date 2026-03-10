@@ -2,57 +2,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Tambah Data Paket"
+        android:text="Tambah Data Paket Kredit"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:textStyle="bold" ></TextView>
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editkode"
+        android:id="@+id/editkodepaket"
         android:inputType="text"
-        android:hint="Ktp pembeli"
-        android:layout_marginBottom="16dp"
+        android:hint="Kode Paket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" ></EditText>
-
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
     <EditText
         android:id="@+id/edituang"
-        android:inputType="text"
-        android:hint="nama pembeli"
-        android:layout_marginBottom="16dp"
+        android:inputType="number"
+        android:hint="uang muka"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" ></EditText>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/edittenor"
-        android:inputType="text"
-        android:hint="alamat pembeli"
-        android:layout_marginBottom="16dp"
+        android:hint="Tenor"
+        android:inputType="number"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" ></EditText>
-
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
     <EditText
         android:id="@+id/editbunga"
+        android:hint="Bunga"
         android:inputType="text"
-        android:hint="nomor hp pembeli"
-        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" ></EditText>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
 
     <Button
         android:id="@+id/tombolsimpan"
-        android:text="Simpan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" ></Button>
-
-
-
-
+        android:layout_height="wrap_content"
+        android:text="Simpan" />
 </LinearLayout>

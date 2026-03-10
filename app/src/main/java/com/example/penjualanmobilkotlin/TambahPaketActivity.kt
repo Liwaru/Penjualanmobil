@@ -10,38 +10,39 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
-class TambahPaketActivity : AppCompatActivity {
+class TambahPaketActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tambah_paket)
 
-        val editKtp = findViewById<EditText>(R.id.editktp)
-        val editNama = findViewById<EditText>(R.id.editnama)
-        val editAlamat = findViewById<EditText>(R.id.editalamat)
-        val editNoHp = findViewById<EditText>(R.id.editnohp)
+        val editkode = findViewById<EditText>(R.id.editkodepaket)
+        val edituang = findViewById<EditText>(R.id.edituang)
+        val edittenor = findViewById<EditText>(R.id.edittenor)
+        val editbunga = findViewById<EditText>(R.id.editbunga)
         val btnSimpan = findViewById<Button>(R.id.tombolsimpan)
 
         btnSimpan.setOnClickListener {
-            val ktp = editKtp.text.toString()
-            val nama = editNama.text.toString()
-            val alamat = editAlamat.text.toString()
-            val nohp = editNoHp.text.toString()
+            val kode = editkode.text.toString()
+            val uang = edituang.text.toString()
+            val tenor = edittenor.text.toString()
+            val bunga = editbunga.text.toString()
 
-            if (ktp.isEmpty() || nama.isEmpty() || alamat.isEmpty() || nohp.isEmpty()) {
+            if (kode.isEmpty() || uang.isEmpty() || tenor.isEmpty() || bunga.isEmpty()) {
                 Toast.makeText(this, "Semua data wajib diisi", Toast.LENGTH_SHORT).show()
             } else {
-                simpanData(ktp, nama, alamat, nohp)
+                simpanData(kode, uang, tenor, bunga)
             }
         }
     }
 
     private fun simpanData(
-        ktp: String,
-        nama: String,
-        alamat: String,
-        nohp: String
+        kode: String,
+        uang: String,
+        tenor: String,
+        bunga: String
     ) {
-        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/Tambahpembeli.php"
+        val url = "http://10.208.184.71/Penjualanmobilkotlinvscode/Tambahpaket.php"
 
         val request = object : StringRequest(
             Request.Method.POST, url,
@@ -62,15 +63,14 @@ class TambahPaketActivity : AppCompatActivity {
         ){
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
-                params["ktp"]=ktp
-                params["nama_pembeli"]=nama
-                params["alamat_pembeli"]=alamat
-                params["telp_pembeli"]=nohp
+                params["kode_paket"]=kode
+                params["uang_muka"]=uang
+                params["tenor"]=tenor
+                params["bunga_cicilan"]=bunga
                 return params
             }
         }
 
         Volley.newRequestQueue(this).add(request)
     }
-}
 }

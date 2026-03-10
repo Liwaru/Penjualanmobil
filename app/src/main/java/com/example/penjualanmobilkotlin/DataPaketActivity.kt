@@ -25,7 +25,7 @@ class DataPaketActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_data_pembeli)
+        setContentView(R.layout.activity_data_paket)
 
         val tomboltambah=findViewById<Button>(R.id.tomboltambah)
 
