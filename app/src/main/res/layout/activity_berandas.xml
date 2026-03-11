@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Selamat Datang Di penjualan mobil"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/tombolmobil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Mobil" />
+
+    <Button
+        android:id="@+id/tombolpembeli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Pembeli" />
+
+    <Button
+        android:id="@+id/tombolpaket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Paket" />
+
+    <Button
+        android:id="@+id/tombolbeli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Beli Cash" />
+
+    <Button
+        android:id="@+id/tombolkredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Beli Kredit" />
+
+    <Button
+        android:id="@+id/tombolcicil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Bayar Cicilan" />
+    <Button
+        android:id="@+id/tombollogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout" />
+
+</LinearLayout>
