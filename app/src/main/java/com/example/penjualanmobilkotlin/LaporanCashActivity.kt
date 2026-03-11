@@ -3,9 +3,7 @@ package com.example.penjualanmobilkotlin
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Spinner
@@ -24,6 +22,11 @@ class LaporanCashActivity : AppCompatActivity() {
     private lateinit var listLaporan: ListView
 
     private val listData = ArrayList<String>()
+
+    companion object {
+        private const val URL_LAPOR =
+            "http://10.36.65.151/penjualanmobil/LaporanCash.php"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,7 @@ class LaporanCashActivity : AppCompatActivity() {
         }
 
         spinnerPeriode.onItemSelectedListener =
-            SimpleItemSelectedListener(Runnable { loadData() })
+            SimpleItemSelectedListener { loadData() }
     }
 
     private fun showDatePicker() {
@@ -62,7 +65,7 @@ class LaporanCashActivity : AppCompatActivity() {
 
         val dialog = DatePickerDialog(
             this,
-            { _: DatePicker, y: Int, m: Int, _: Int ->
+            { _, y, m, _ ->
 
                 if (selectedPeriode == "Tahunan") {
 
@@ -91,17 +94,20 @@ class LaporanCashActivity : AppCompatActivity() {
 
             if (selectedPeriode == "Tahunan") {
 
-                datePicker.findViewById<View>(dayId)?.visibility = View.GONE
-                datePicker.findViewById<View>(monthId)?.visibility = View.GONE
+                datePicker.findViewById<android.view.View>(dayId)?.visibility =
+                    android.view.View.GONE
+                datePicker.findViewById<android.view.View>(monthId)?.visibility =
+                    android.view.View.GONE
 
             } else {
 
-                datePicker.findViewById<View>(dayId)?.visibility = View.GONE
+                datePicker.findViewById<android.view.View>(dayId)?.visibility =
+                    android.view.View.GONE
             }
 
         } catch (e: Exception) {
 
-            Log.e("DatePicker", "Error: ${e.message}")
+            Log.e("DatePicker", "Gagal menyembunyikan field: ${e.message}")
         }
 
         dialog.show()
@@ -109,16 +115,17 @@ class LaporanCashActivity : AppCompatActivity() {
 
     private fun loadData() {
 
-        val selectedText = spinnerPeriode.selectedItem.toString()
-
-        val periodeParam =
-            if (selectedText == "Tahunan") "tahun" else "bulan"
+        val periode =
+            if (spinnerPeriode.selectedItem.toString() == "Tahunan")
+                "tahun"
+            else
+                "bulan"
 
         val tanggal = etTanggal.text.toString().trim()
 
         if (tanggal.isEmpty()) return
 
-        val url = "$URL_LAPOR?periode=$periodeParam&tanggal=$tanggal"
+        val url = "$URL_LAPOR?periode=$periode&tanggal=$tanggal"
 
         val request = StringRequest(
             Request.Method.GET,
@@ -141,7 +148,7 @@ class LaporanCashActivity : AppCompatActivity() {
                                     "Pembeli : ${obj.getString("nama_pembeli")}\n" +
                                     "Mobil : ${obj.getString("merk")} ${obj.getString("type")}\n" +
                                     "Tanggal : ${obj.getString("cash_tgl")}\n" +
-                                    "Bayar : Rp ${obj.getString("cash_bayar")}\n"
+                                    "Bayar : Rp ${obj.getString("cash_bayar")}"
 
                         listData.add(tampil)
                     }
@@ -166,9 +173,7 @@ class LaporanCashActivity : AppCompatActivity() {
                 }
             },
 
-            { error ->
-
-                Log.e("VolleyError", error.toString())
+            {
 
                 Toast.makeText(
                     this,
@@ -179,11 +184,5 @@ class LaporanCashActivity : AppCompatActivity() {
         )
 
         Volley.newRequestQueue(this).add(request)
-    }
-
-    companion object {
-
-        private const val URL_LAPOR =
-            "http://192.168.0.15/penjualanmobil/LaporanCash.php"
     }
 }
